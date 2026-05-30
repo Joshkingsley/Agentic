@@ -164,7 +164,6 @@ cd Agentic
 pip install -r requirements.txt
 
 # Environment variables
-cp .env.example .env
 # Add GROQ_API_KEY and BRIGHTDATA_API_TOKEN to .env
 
 # Run Django
@@ -191,13 +190,13 @@ npm run dev
 ```
 Agentic/
 ├── ScrapingApp/          # React frontend (Vite)
+│   └── models.py         # Should you want to store data
+│   ├── views.py          # All three agents + enrichment layer
+│   └── urls.py           # API route definitions
 ├── ScrapingProject/      # Django project settings and root URLs
 │   ├── settings.py
 │   └── urls.py
-├── arbitrage/            # Core Django app
-│   ├── views.py          # All three agents + enrichment layer
-│   └── urls.py           # API route definitions
-├── staticfiles/          # Collected static assets
+├── staticfiles/      
 ├── requirements.txt
 └── manage.py
 ```
