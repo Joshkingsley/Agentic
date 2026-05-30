@@ -600,7 +600,7 @@ function Sidebar({ spreads, activeId, onSelect, catFilter, onCatFilter }) {
 }
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
-function Nav({ dataSource, onRefresh }) {
+function Nav({ dataSource, onRefresh, onBack }) {
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 50, height: 56,
@@ -719,21 +719,25 @@ export default function Dashboard({ spreads: propSpreads, dataSource: propDataSo
     }
   }, [propSpreads, propRefresh]);
 
+  const [catFilter,    setCatFilter]    = useState("All");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [activeId,     setActiveId]     = useState(null);
+
   useEffect(() => { if (!propSpreads?.length) loadData(); }, []);
 
   // Replace handleSelect to route out instead of opening drawer:
   const handleSelect = (item) => {
     if (onItemClick) {
-      onItemClick(item.id);        // ← navigate to ItemDetail
+      onItemClick(item);
     } else {
-      setSelectedItem(item);       // ← fallback: keep drawer for standalone use
+      setSelectedItem(item);
       setActiveId(item.id);
     }
   };
 
   const filtered = catFilter === "All"
-    ? spreads
-    : spreads.filter(s => s.category === catFilter);
+  ? spreads
+  : spreads.filter(s => s.category === catFilter);
 
   if (dataSource === "loading") {
     return (

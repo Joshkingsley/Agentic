@@ -12,6 +12,7 @@ urlpatterns = [
     #Entry point
 
     path("", home_view, name="Entry"),
+    path("dashboard", home_view, name="Entry"),
     path("arbitrage/feed/",            InitialFeedView.as_view(),       name="feed"), 
     
     # ── Main pipeline ─────────────────────────────────────────────────────────

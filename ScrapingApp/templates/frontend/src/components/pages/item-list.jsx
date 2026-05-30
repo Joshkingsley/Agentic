@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
+import { useParams } from "react-router-dom";
+
 // ─── ITEM DEFAULTS (rich detail data — merged with live spread pricing) ────────
 
 export const ITEM_DEFAULTS = [
@@ -434,7 +436,9 @@ function ComparisonChart({ item, selectedCodes }) {
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
-export default function ItemDetail({ itemId, spreads = [], onBack, onPoolClick }) {
+
+export default function ItemDetail({ spreads = [], onBack, onPoolClick }) {
+  const { id: itemId } = useParams();
   // Merge: live spread pricing is overlaid onto rich ITEM_DEFAULTS
   const defaults = ITEM_DEFAULTS.find(i => i.id === itemId) || ITEM_DEFAULTS[0];
   const live = spreads.find(s => s.id === itemId);
