@@ -55,11 +55,8 @@ At the core of AIE is a strict, hardcoded profit calculation ensuring absolute p
 
 ### Prerequisites
 * Node.js (v18+)
-* Python (3.10+)
+* Python (3.11+)
 * Groq API Key
 * Bright Data Account
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/yourusername/arbitrage-intelligence-engine.git](https://github.com/yourusername/arbitrage-intelligence-engine.git)
-cd arbitrage-intelligence-engine
+### 1. Clone the Repository if you want...
