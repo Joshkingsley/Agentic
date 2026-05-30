@@ -52,7 +52,7 @@ def _get_brightdata_client() -> SyncBrightDataClient:
     Returns a configured Bright Data client.
     Raises clearly if the token is missing rather than failing silently.
     """
-    api_token = os.getenv("BRIGHTDATA_API_TOKEN")
+    api_token = os.getenv("BRIGHTDATA_API_TOKEN", "d60bdfe5-08f3-42f7-93c1-78afa970e1cf")
     if not api_token:
         raise EnvironmentError(
             "BRIGHTDATA_API_TOKEN is not set. "
@@ -207,7 +207,7 @@ def _direct_fetch(url: str) -> BeautifulSoup | None:
 # ─── GROQ CLIENT (singleton) ─────────────────────────────────────────────────
 
 def _get_groq_client():
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY", "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")
     if not api_key:
         raise EnvironmentError("GROQ_API_KEY is not set.")
     return Groq(api_key=api_key)
